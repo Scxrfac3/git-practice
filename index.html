@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab-3</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ message }} </h1>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'To-do list'
+            }
+        })
+    </script>
+    <div id="app-4">
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
+    <script>
+    var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { text: 'task1' },
+                    { text: 'task2' },
+                    { text: 'task3' }
+                ]
+            }
+        })
+    </script>
+    <div id="app-tb">
+        <p>{{ message }}</p>
+        <input v-model="message">
+        <button v-on:click="addtask">Add task</button>
+    </div>
+    <script>
+    var apptb = new Vue({
+            el: '#app-tb',
+            data: {
+                message: 'new task',
+            },
+            methods: {
+                addtask: function () {
+                    app4.todos.push({ text: this.message })
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
